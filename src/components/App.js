@@ -1,4 +1,6 @@
 import React from 'react';
+import ReactGA from 'react-ga';
+
 import SearchBar from './SearchBar';
 import youtube from '../apis/youtube';
 import VideoList from './VideoList';
@@ -9,6 +11,12 @@ class App extends React.Component {
 
     componentDidMount() {
         this.onTermSubmit('toronto');
+        initializeReactGA();
+    }
+
+    initializeReactGA = () => {
+        ReactGA.initialize('UA-140940089-1');
+        ReactGA.pageview('/homepage');
     }
 
     onTermSubmit = async (term) => {
